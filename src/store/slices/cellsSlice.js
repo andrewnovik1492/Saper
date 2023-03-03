@@ -100,7 +100,7 @@ const cellsSlice = createSlice({
       } else {
         state.cellsList[payload.row][payload.column].isOpen = true
         if(!state.cellsList[payload.row][payload.column].number) {
-          // ТУТ ЛОГИКА ОТКРЫТИЯ ЯЧЕЕК
+          
         }
       }
     }
