@@ -1,20 +1,40 @@
 import './index.scss';
 import TimerBlock from '../TimerBlock';
 import { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import {ReactComponent as Smile} from '../../images/svg/smile.svg';
 import {ReactComponent as Warning} from '../../images/svg/warning.svg';
 import {ReactComponent as Lose} from '../../images/svg/lose.svg';
+import { changeGameStatus, startGame } from '../../store/slices/configurationSlice';
 
 const Header = () => {
-  const [minutes, setMinutes] = useState(41)
-  const [seconds, setSeconds] = useState(0)
-  const status = useSelector(state => state.configuration.status)
+  const dispatch = useDispatch()
+  const [minutes, setMinutes] = useState(40)
+  const [seconds, setSeconds] = useState(1)
+  const [minTimer, setMinTimer] = useState(null)
+  const gameStatus = useSelector(state => state.configuration.status)
 
-  useEffect(() => {
+  const startInterval = () => {
     const interval = setInterval(() => {
       setSeconds((prev) => prev === 60 ? 0 : prev + 1) 
     }, 1000)
+    setMinTimer(interval)
+    return interval
+  }
+  useEffect(() => {
+    if(gameStatus === 'lose') {
+      clearInterval(minTimer)
+      resetGame()
+    }
+  }, [gameStatus])
+
+  useEffect(() => {
+    if(!minutes) {
+      dispatch(changeGameStatus('lose'))
+    }
+  }, [minutes])
+  useEffect(() => {
+    const interval = startInterval()
 
     return () => clearInterval(interval)
   }, [])
@@ -26,13 +46,13 @@ const Header = () => {
   }, [seconds])
 
   const clickHandler = () => {
-    if(status === 'progress') {
-      resetGame()
-    }
+    dispatch(startGame())
+    resetGame()
+    startInterval()
   }
 
   const resetGame = () => {
-    setMinutes(41)
+    setMinutes(40)
     setSeconds(0)
   }
   return (
@@ -40,7 +60,7 @@ const Header = () => {
       <TimerBlock number={minutes} />
       <button onClick={clickHandler}>
         {
-          status === 'progress' ? <Smile /> : status === 'warning' ? <Warning /> : <Lose />
+          gameStatus === 'progress' ? <Smile /> : gameStatus === 'warning' ? <Warning /> : <Lose />
         }
       </button>
       <TimerBlock number={seconds}/>

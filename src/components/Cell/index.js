@@ -1,19 +1,22 @@
-import { useDispatch } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 import styled from "styled-components"
-import { changeCellStatus } from "../../store/slices/cellsSlice"
 import {ReactComponent as Flag} from '../../images/svg/flag.svg'
 import {ReactComponent as Question} from '../../images/svg/question.svg'
 import {ReactComponent as Bomb} from '../../images/svg/bomb.svg'
-import { openCell } from "../../store/slices/cellsSlice"
+import { openCell, changeCellStatus } from "../../store/slices/configurationSlice"
 
 const Cell = ({cell}) => {
   const dispatch = useDispatch()
+  const gameStatus = useSelector(state => state.configuration.status)
   const rigthClickHandler = (event) => {
     event.preventDefault()
     dispatch(changeCellStatus(cell))
   }
 
   const openCellHandler = () => {
+    if(gameStatus === 'lose') {
+      return
+    }
     dispatch(openCell(cell))
   }
 

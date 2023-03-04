@@ -1,6 +1,6 @@
 import { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
-import { generateCellsList } from "../../store/slices/cellsSlice"
+import { startGame} from "../../store/slices/configurationSlice"
 import CellsRow from "../CellsRow"
 
 const CellsContainer = () => {
@@ -8,7 +8,7 @@ const CellsContainer = () => {
   const dispatch = useDispatch()
 
   useEffect(() => {
-    dispatch(generateCellsList())
+    dispatch(startGame())
   }, [])
 
   return (
