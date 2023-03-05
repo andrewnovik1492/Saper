@@ -45,7 +45,7 @@ const CellContainer = styled.div`
   border: 1px solid black;
   box-shadow: 1px -2px 39px -3px rgba(127, 132, 136, 0.2) inset;
   background-color: ${(props) => props.finish ? 'red': props.open ? 'white' : 'rgb(172, 172, 192)'};
-  color: ${(props) => props.number == 1 ? 'blue' : props.number == 2 ? 'green' : props.number == 3 ? 'red' : props.number == 4 ? 'havy blue' : props.number == 5 ? 'brown' : props.number == 6 ? 'cyan' : props.number == 7 ? 'black' : 'gray'};
+  color: ${(props) => props.number === 1 ? 'blue' : props.number === 2 ? 'green' : props.number === 3 ? 'red' : props.number === 4 ? 'havy blue' : props.number === 5 ? 'brown' : props.number === 6 ? 'cyan' : props.number === 7 ? 'black' : 'gray'};
   font-size: 20px;
   font-weight: bold;
 `
