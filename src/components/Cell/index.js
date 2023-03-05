@@ -21,7 +21,7 @@ const Cell = ({cell}) => {
   }
 
   return (
-    <CellContainer finish={cell.isFinished} open={cell.isOpen && !cell.isBomb} onClick={openCellHandler} onContextMenu={rigthClickHandler}>
+    <CellContainer number={cell.number} finish={cell.isFinished} open={cell.isOpen && !cell.isBomb} onClick={openCellHandler} onContextMenu={rigthClickHandler}>
       {
         cell.isOpen && cell.isBomb && <Bomb />
       }
@@ -43,8 +43,10 @@ const CellContainer = styled.div`
   width: 40px;
   height: 40px;
   border: 1px solid black;
+  box-shadow: 1px -2px 39px -3px rgba(127, 132, 136, 0.2) inset;
   background-color: ${(props) => props.finish ? 'red': props.open ? 'white' : 'rgb(172, 172, 192)'};
-  color: blue;
+  color: ${(props) => props.number == 1 ? 'blue' : props.number == 2 ? 'green' : props.number == 3 ? 'red' : props.number == 4 ? 'havy blue' : props.number == 5 ? 'brown' : props.number == 6 ? 'cyan' : props.number == 7 ? 'black' : 'gray'};
   font-size: 20px;
+  font-weight: bold;
 `
 export default Cell

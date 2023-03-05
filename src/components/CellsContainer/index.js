@@ -1,15 +1,8 @@
-import { useEffect } from "react"
-import { useDispatch, useSelector } from "react-redux"
-import { startGame} from "../../store/slices/configurationSlice"
+import { useSelector } from "react-redux"
 import CellsRow from "../CellsRow"
 
 const CellsContainer = () => {
-  const cellsList = useSelector(state => state.cells.cellsList)
-  const dispatch = useDispatch()
-
-  useEffect(() => {
-    dispatch(startGame())
-  }, [])
+  const cellsList = useSelector(state => state.configuration.cellsList)
 
   return (
     <div className="cells-container">
@@ -21,3 +14,4 @@ const CellsContainer = () => {
 }
 
 export default CellsContainer
+

@@ -11,7 +11,6 @@ const App = () => {
   useEffect(() => {
     dispatch(startGame())
   }, [])
-  
   return (
     <main>
       <div className='game-container'>
