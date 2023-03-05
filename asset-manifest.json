@@ -1,0 +1,19 @@
+{
+  "files": {
+    "main.css": "/Saper/static/css/main.26dc7b1e.css",
+    "main.js": "/Saper/static/js/main.48aa2a5d.js",
+    "static/media/warning.svg": "/Saper/static/media/warning.506073ff957f919368f7f00effa199d0.svg",
+    "static/media/lose.svg": "/Saper/static/media/lose.46c05e67a09c1093bb912abbf47886b7.svg",
+    "static/media/smile.svg": "/Saper/static/media/smile.d2ee83ace222c9dc5dfd1468fb298f00.svg",
+    "static/media/bomb.svg": "/Saper/static/media/bomb.dd0fdd01d03803e120c3228b8db26443.svg",
+    "static/media/question.svg": "/Saper/static/media/question.1d274d622da501d81f7c0ad2a3ba7128.svg",
+    "static/media/flag.svg": "/Saper/static/media/flag.744681183e6e1f74a45dedeab0a70176.svg",
+    "index.html": "/Saper/index.html",
+    "main.26dc7b1e.css.map": "/Saper/static/css/main.26dc7b1e.css.map",
+    "main.48aa2a5d.js.map": "/Saper/static/js/main.48aa2a5d.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.26dc7b1e.css",
+    "static/js/main.48aa2a5d.js"
+  ]
+}
